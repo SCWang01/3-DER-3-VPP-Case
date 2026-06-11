@@ -6,7 +6,7 @@ x_2=0.1;
 x_3=0.1;
 % Step size and convergence threshold.
 epis=0.1;
-conver=1e-8;
+conver=1e-10;
 % Loop control and history.
 storage=zeros(1000,3);
 afflication_1=zeros(1000,3);
@@ -15,7 +15,7 @@ afflication_3=zeros(1000,3);
 
 % Seed the history to allow the first difference computation.
 storage(1,:)=[x_1,x_2,x_3];
-for iteration=2:80
+for iteration=2:200
     % Solve subproblem 1 with current x_2.
     solution_1=Sub_VPP_1(x_2,x_3, epis);
     x_1=solution_1.x_1;

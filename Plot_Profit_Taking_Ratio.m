@@ -19,11 +19,11 @@ plot(iteration_count, storage_plot(:, 3), '-^', ...
     'LineWidth', 2.2, 'MarkerSize', 6);
 hold off;
 
-set(gca, 'FontName', 'Times New Roman', 'FontSize', 12);
-xlabel('Iteration count', 'FontName', 'Times New Roman', 'FontSize', 13);
-ylabel('profit-taking ratio', 'FontName', 'Times New Roman', 'FontSize', 13);
+set(gca, 'FontName', 'Calibri', 'FontSize', 12);
+xlabel('Iteration count', 'FontName', 'Calibri', 'FontSize', 13);
+ylabel('profit-taking ratio', 'FontName', 'Calibri', 'FontSize', 13);
 legend({'VPP1', 'VPP2', 'VPP3'}, ...
-    'FontName', 'Times New Roman', 'FontSize', 12, 'Location', 'best');
+    'FontName', 'Calibri', 'FontSize', 12, 'Location', 'best');
 grid on;
 box on;
 

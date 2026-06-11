@@ -1,7 +1,7 @@
 function solution_1=Sub_VPP_3(x_1,x_2,eps)
     switching_1=0;
-    switching_2=35;
-    switching_3=20;
+    switching_2=30;
+    switching_3=60;
     %DER-1+DER-2:100 ,DER-1+DER-3:120,DER-2+DER-3:80 
     solution_1=struct();
     F=[];
@@ -27,8 +27,8 @@ function solution_1=Sub_VPP_3(x_1,x_2,eps)
     % Transferred KKT Conditions 
     %DER1
     F=[F EPR_1(1)==0];
-    F=[F EPR_1(2)==50*(1-x_2)-switching_1];
-    F=[F EPR_1(3)==60*(1-x_3)-switching_1];
+    F=[F EPR_1(2)==120*(1-x_2)-switching_1];
+    F=[F EPR_1(3)==240*(1-x_3)-switching_1];
     for i=1:3
         F=[F y_1(i)<=K_1(i)*M];
         F=[F mu_1(i)<= (1-K_1(i))*M];
@@ -40,9 +40,9 @@ function solution_1=Sub_VPP_3(x_1,x_2,eps)
 
     %DER2
     EPR_2=sdpvar(3,1);
-    F=[F EPR_2(1)==50*(1-x_1)-switching_2];
+    F=[F EPR_2(1)==120*(1-x_1)-switching_2];
     F=[F EPR_2(2)==0];
-    F=[F EPR_2(3)==40*(1-x_3)-switching_2];
+    F=[F EPR_2(3)==72*(1-x_3)-switching_2];
     for i=1:3
         F=[F y_2(i)<=K_2(i)*M];
         F=[F mu_2(i)<= (1-K_2(i))*M];
@@ -54,8 +54,8 @@ function solution_1=Sub_VPP_3(x_1,x_2,eps)
 
     %DER3
     EPR_3=sdpvar(3,1);
-    F=[F EPR_3(1)==60*(1-x_1)-switching_3];
-    F=[F EPR_3(2)==40*(1-x_2)-switching_3];
+    F=[F EPR_3(1)==240*(1-x_1)-switching_3];
+    F=[F EPR_3(2)==72*(1-x_2)-switching_3];
     F=[F EPR_3(3)==0];
     for i=1:3
         F=[F y_3(i)<=K_3(i)*M];
@@ -67,7 +67,7 @@ function solution_1=Sub_VPP_3(x_1,x_2,eps)
     F=[F y_3 >=0];
 
 
-    obj=x_3*(120*y_1(3)+80*y_2(3))+switching_3*(1-y_3(3));
+    obj=x_3*(480*y_1(3)+144*y_2(3))+switching_3*(1-y_3(3));
 
     %optimization settings
     ops=sdpsettings('solver','gurobi');
