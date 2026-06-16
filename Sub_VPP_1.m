@@ -66,7 +66,7 @@ function solution_1=Sub_VPP_1(x_2,x_3,eps)
     F=[F mu_3>=0];
     F=[F y_3 >=0];
 
-    obj=x_1*(240*y_2(1)+480*y_3(1))+switching_1*(1-y_1(1));
+    obj=x_1*(240*y_2(1)+480*y_3(1))+2*switching_1*(1-y_1(1));
 
     %optimization settings
     ops=sdpsettings('solver','gurobi');
